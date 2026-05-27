@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-rose-50: #fff5f5;
+  --color-rose-100: #ffe4e6;
+  --color-rose-300: #fda4af;
+  --color-rose-500: #f43f5e;
+  --color-burgundy: #7a1d2c;
+  --color-cream: #fffaf3;
+  --color-gold: #c08c5a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(180deg, #fff5f5 0%, #ffe4e6 50%, #fef3e2 100%);
+  background-attachment: fixed;
+  color: #4a1d2a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fff5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #fda4af, #f43f5e);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #be123c;
+}
+
+/* Polaroid effect */
+.polaroid {
+  background: #fff;
+  padding: 12px 12px 56px 12px;
+  box-shadow: 0 6px 20px rgba(122, 29, 44, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  transition: transform 0.4s ease;
+}
+.polaroid:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+/* Vignette overlay */
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(74, 29, 42, 0.35) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Handwritten letter background */
+.letter-paper {
+  background: #fffaf3;
+  background-image:
+    linear-gradient(rgba(193, 154, 107, 0.18) 1px, transparent 1px);
+  background-size: 100% 36px;
+  box-shadow:
+    0 1px 1px rgba(122, 29, 44, 0.05),
+    0 10px 30px rgba(122, 29, 44, 0.10),
+    inset 0 0 60px rgba(193, 154, 107, 0.08);
+}
+
+/* 3D card flip */
+.card-flip {
+  perspective: 1200px;
+}
+.card-flip-inner {
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.card-flip.is-flipped .card-flip-inner {
+  transform: rotateY(180deg);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-flip:hover .card-flip-inner {
+    transform: rotateY(180deg);
+  }
+}
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1rem;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Selection color */
+::selection {
+  background: #fda4af;
+  color: #420d18;
+}
+
+/* Audio waveform bars */
+.wave-bar {
+  display: inline-block;
+  width: 3px;
+  margin: 0 1.5px;
+  background: linear-gradient(180deg, #fb7185, #be123c);
+  border-radius: 3px;
+  transition: height 0.1s ease;
+}
+
+/* Subtle text shadow for elegance */
+.text-elegant {
+  text-shadow: 0 1px 2px rgba(122, 29, 44, 0.08);
+}
